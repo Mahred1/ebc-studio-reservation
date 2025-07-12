@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Radio from "../_components/Radio";
 
@@ -16,24 +17,39 @@ function Page() {
       </h1>
 
       <form className="flex flex-col items-center">
-        
+        <Checkbox />
       </form>
     </div>
   );
 }
 
-function Input({ lable, placeholder }) {
+function Checkbox() {
   return (
-    <div className="mb-5 mt-5 font-inter flex flex-col min-w-[30rem]">
-      <label className="text-xl font-bold mb-1 ">{lable}</label>
-      <input
-      name={lable}
-        className="p-4 text-[#666] text-xl rounded-lg border border-[#ccc]"
-        placeholder={placeholder}
-      ></input>
+    <div className="flex items-center gap-4 my-5">
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          id="local"
+          name="local"
+          class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+        />
+        <label for="terms" class="ml-2 block text-md font-semibold text-gray-900">
+          Local
+        </label>
+      </div>
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          id="worldwide"
+          name="worldwide"
+          class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+        />
+        <label for="terms" class="ml-2 block text-md font-semibold text-gray-900">
+          Worldwide
+        </label>
+      </div>
     </div>
   );
 }
-
 
 export default Page;
