@@ -9,6 +9,8 @@ import Input from "../_components/Input";
 import InputTwins from "../_components/InputTwins";
 import Link from "next/link";
 import supabase from "@/supabase";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const [stage, setStage] = useState(1);
@@ -17,16 +19,19 @@ function Page() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
-
+  const regid = Math.floor(Math.random() * 1000);
+const router = useRouter()
   async function onSubmit(data) {
     try {
       const { error } = await supabase
         .from("Rservations")
         .insert(
           [data])
-        
+
         .select();
       if (error) throw new Error();
+      toast.success("Reservation successfully created!")
+      router.replace(`reserve/${data.reservationId}`)
     } catch (e) {
       console.log(e.message);
     }
@@ -145,6 +150,7 @@ function Page() {
         )}
         {stage === 4 && (
           <div className="mb-5">
+            <input type="hidden" {...register("reservationId")} value={regid} />
             <Input
               register={register}
               lable={"Live Broadcast orientation manager name"}
