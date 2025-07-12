@@ -1,6 +1,6 @@
 export default function Radio({ lable1, lable2 }) {
   return (
-    <div className="flex gap-4 my-5 justify-center ">
+    <div className="flex gap-4 my-5 justify-start ">
       <div className="flex gap-1">
         <input
           type="radio"

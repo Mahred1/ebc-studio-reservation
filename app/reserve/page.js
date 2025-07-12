@@ -32,7 +32,7 @@ function Page() {
         Reserve your session now!
       </h1>
       <div className="my-6 flex justify-center">
-        <ul className="flex w-full px-[17rem] justify-between items-center">
+        <ul className="flex w-full px-[30rem] justify-between items-center">
           <li className={`${stage >= 1 && "text-4xl font-semibold"} `}>1</li>
           <li
             className={`${
@@ -66,7 +66,7 @@ function Page() {
 
       <form className="flex flex-col items-center">
         {stage === 1 && (
-          <div>
+          <div className="mb-5">
             <Input lable={"Email"} />
             <Input lable={"Fullname"} />
             <Radio lable1={"Recording"} lable2={"Broadcasting"} />
@@ -78,9 +78,14 @@ function Page() {
           </div>
         )}
 
-       
+        {stage===2 && <div className="mb-5">
+          <Input lable={'Brod. Address'} />
+          <InputTwins lable1={'City'} lable2={'Sub city'} />
+          <Input lable={'Purpouse of request '} />
+          <Input lable={'is the roads suitable for a car? '} />
+          </div>}
 
-        <div className="flex justify-between w-[70%]">
+        <div className="flex justify-between w-[50%]">
           <Button type="action" onClick={(e) => handleBack(e)}>
             Back
           </Button>
