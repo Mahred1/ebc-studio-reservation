@@ -15,6 +15,9 @@ module.exports = {
         'primary-200':'#4B70F5',
         'secondary-100':'#D9D9D9'
       },
+      fontFamily:{
+        mona:['Mona Sans',"sans-serif"]
+      }
     },
   },
   plugins: [],
