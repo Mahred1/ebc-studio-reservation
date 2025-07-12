@@ -1,4 +1,9 @@
+'use client'
+
+import { useFormStatus } from "react-dom";
+
 function Button({ children, style = "primary",onClick}) {
+   const { pending } = useFormStatus();
   return (
     <button 
     onClick={onClick}
@@ -8,7 +13,7 @@ function Button({ children, style = "primary",onClick}) {
         style === "action" && "bg-primary-200 text-white"
       } px-10 py-3 font-md rounded-md font-semibold tracking-widest hover:scale-[103%] `}
     >
-      {children}
+      {pending?"loading...":children}
     </button>
   );
 }
