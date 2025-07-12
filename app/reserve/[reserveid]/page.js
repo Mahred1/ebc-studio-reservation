@@ -23,8 +23,10 @@ async function Page({params}) {
 
     return (
 
-        <div className="mt-10 max-w-[90%] mx-auto">
-        <div className="flex items-center">
+       
+       <div className="mt-10 max-w-[90%] mx-auto">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center">
             <Link className="self-center mb-3  " href={"/"}>
         <Image width={70} height={70} src="/ebc-logo.png" alt="EBC" />
       </Link>
@@ -32,6 +34,17 @@ async function Page({params}) {
         Reservation report   ID-{data.reservationId}
       </h1> 
         </div>
+        <button
+          className={`${data.status === "review" && "bg-[#ffbf1d]"} ${
+            data.status === "approved" && "bg-[#3E9837]"
+          } ${
+            data.status === "denied" && "bg-[#F54B4B]"
+          } px-6 py-5 font-md text-lg  font-semibold text-white tracking-widest hover:scale-[103%]`}
+        >
+          {data.status === "review" ? "Under " + data.status : data.status}
+        </button>
+        </div>
+        
         
 
         <div className="mt-10 ">

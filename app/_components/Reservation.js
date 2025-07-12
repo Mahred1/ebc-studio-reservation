@@ -10,7 +10,7 @@ console.log(reservationId)
     router.replace(`/admin/review/${reservationId}`)
   }
   return (
-    <div className="flex justify-between mt-6 w-[80%] mx-auto">
+    <div className="flex justify-between mt-6 border-b-2 pb-2 border-[#bebebe] w-[80%] mx-auto">
       <div>
         <p>{Fullname}</p>
         <p className="font-semibold text-lg">
@@ -20,7 +20,7 @@ console.log(reservationId)
           Time: <span className="font-light text-lg">{time}</span>
         </p>
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-3 items-center">
         <Button onClick={handleReview} style="fallback">Review</Button>
         <Button disabled={status === "approved"} style="action">
           {status === "approved" ? "Approved" : "Approve"}
