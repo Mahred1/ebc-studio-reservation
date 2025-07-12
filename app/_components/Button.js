@@ -1,6 +1,7 @@
-function Button({ children, type = "primary" }) {
+function Button({ children, type = "primary",onClick }) {
   return (
     <button
+    onClick={onClick}
       className={`${type == "primary" && "bg-primary-100 text-white"} ${
         type === "secondary" && "bg-secondary-100 text-primary-100"
       } ${

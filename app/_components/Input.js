@@ -1,4 +1,4 @@
-export default function Input({ lable, placeholder }) {
+export default function Input({ lable, placeholder='Type here' }) {
   return (
     <div className="mb-5 mt-5 font-inter flex flex-col min-w-[30rem]">
       <label className="text-xl font-bold mb-1 ">{lable}</label>
