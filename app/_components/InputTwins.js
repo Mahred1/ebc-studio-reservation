@@ -1,4 +1,4 @@
-export default function InputTwins({ lable1, placeholder1, lable2, placeholder2 }) {
+export default function InputTwins({ lable1, placeholder1="Type here", lable2, placeholder2="Type here" }) {
   return (
     <div className="mb-5 mt-5 font-inter flex gap-6 min-w-[30rem]">
       <div className="flex flex-col">

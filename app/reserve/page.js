@@ -4,6 +4,8 @@ import Radio from "../_components/Radio";
 import { useState } from "react";
 import Button from "../_components/Button";
 import Input from "../_components/Input";
+import Dropdown from "../_components/Dropdown";
+import InputTwins from "../_components/InputTwins";
 
 function Page() {
   const [stage, setStage] = useState(1);
@@ -63,9 +65,20 @@ function Page() {
       </div>
 
       <form className="flex flex-col items-center">
-        {stage === 1 && <div>
-          <Input lable={'Email'}/>
-          </div>}
+        {stage === 1 && (
+          <div>
+            <Input lable={"Email"} />
+            <Input lable={"Fullname"} />
+            <Radio lable1={"Recording"} lable2={"Broadcasting"} />
+            <Dropdown lable={"Radio"} options={["no-radio", "FM 97.1"]} />
+            <Dropdown
+              lable={"Television"}
+              options={["no-TV", "EBC 1", "EBC 2", "EBC 3"]}
+            />
+          </div>
+        )}
+
+       
 
         <div className="flex justify-between w-[70%]">
           <Button type="action" onClick={(e) => handleBack(e)}>
