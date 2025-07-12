@@ -25,7 +25,7 @@ export default function Home() {
           <Button>Reserve a studio</Button>
         </Link>
         <Link href={"/check"}>
-          <Button type="secondary">Check Reservation</Button>
+          <Button style="secondary">Check Reservation</Button>
         </Link>
       </div>
     </main>

@@ -1,10 +1,11 @@
-export default function InputTwins({ lable1, placeholder1="Type here", lable2, placeholder2="Type here" }) {
+export default function InputTwins({ lable1, placeholder1="Type here", lable2, placeholder2="Type here" ,register}) {
   return (
     <div className="mb-5 mt-5 font-inter flex gap-6 min-w-[30rem]">
       <div className="flex flex-col">
         <label className="text-lg font-medium mb-1 ">{lable1}</label>
         <input
           name={lable1}
+          {...register(lable1)}
           className="p-4 max-w-[12rem] text-[#666] text-xl rounded-lg border border-[#ccc]"
           placeholder={placeholder1}
         ></input>
@@ -12,7 +13,9 @@ export default function InputTwins({ lable1, placeholder1="Type here", lable2, p
       <div className="flex flex-col">
         <label className="text-lg font-medium mb-1 ">{lable2}</label>
         <input
-          name={lable1}
+          name={lable2}
+          {...register(lable2)}
+
           className="p-4 max-w-[12rem] text-[#666] text-xl rounded-lg border border-[#ccc]"
           placeholder={placeholder2}
         ></input>
