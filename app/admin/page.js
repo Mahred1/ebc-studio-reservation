@@ -2,6 +2,7 @@ import supabase from "@/supabase";
 import Image from "next/image";
 import Link from "next/link";
 import AdminCard from "../_components/AdminCard";
+import Reservation from "../_components/Reservation";
 
 export const revalidate = 0;
 async function Page() {
@@ -33,6 +34,10 @@ async function Page() {
         <AdminCard type={'review'} src="/review.png" detail={'Under Review'} >{review}</AdminCard>
         <AdminCard type={'denied'} src="/deny.png" detail={'Denied '} >{denied}</AdminCard>
         <AdminCard type={'approved'} src="/approved.svg" detail={'Approved'} >{approved}</AdminCard>
+      </div>
+
+      <div className="mt-20">
+        {data.map(res=><Reservation Fullname={res.Fullname} reservationId={res.reservationId} status={res.status} date={res.Date} time={res.Time} key={res.reservationId} />)}
       </div>
     </div>
   );
