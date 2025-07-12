@@ -6,6 +6,7 @@ import Button from "../_components/Button";
 import Input from "../_components/Input";
 import Dropdown from "../_components/Dropdown";
 import InputTwins from "../_components/InputTwins";
+import Checkbox from "../_components/Checkbox";
 
 function Page() {
   const [stage, setStage] = useState(1);
@@ -78,19 +79,44 @@ function Page() {
           </div>
         )}
 
-        {stage===2 && <div className="mb-5">
-          <Input lable={'Brod. Address'} />
-          <InputTwins lable1={'City'} lable2={'Sub city'} />
-          <Input lable={'Purpouse of request '} />
-          <Input lable={'is the roads suitable for a car? '} />
-          </div>}
+        {stage === 2 && (
+          <div className="mb-5">
+            <Input lable={"Brod. Address"} />
+            <InputTwins lable1={"City"} lable2={"Sub city"} />
+            <Input lable={"Purpouse of request "} />
+            <Input lable={"is the roads suitable for a car? "} />
+          </div>
+        )}
 
-        <div className="flex justify-between w-[50%]">
-          <Button type="action" onClick={(e) => handleBack(e)}>
+        {stage === 3 && (
+          <div className="mb-5">
+            <Input lable={"Address "} />
+            <Checkbox />
+            <InputTwins lable1={"Date"} lable2={"Time"} />
+            <Input lable={"Brod. Date "} />
+            <InputTwins
+              lable1={"Bordcating start"}
+              lable2={"Broadcasting end"}
+              placeholder1="From"
+              placeholder2="To"
+            />
+          </div>
+        )}
+        {stage === 4 && <div className="mb-5">
+            <Input lable={"Live Brod. orientation manager name "} />
+            <Input lable={"Live Brod. orientation location "} />
+            <Input lable={"Live Brod. orientation time "} />
+            <Input lable={"Brod. & Recording manger (Requesting side) "} />
+            <Input lable={"Phone number (Manager) "} />
+            <Input lable={"Confirming executor name  "} />
+          
+          </div>}
+        <div className="flex mb-5 justify-between w-[50%]">
+          {<Button type="action" onClick={(e) => handleBack(e)}>
             Back
-          </Button>
+          </Button>}
           <Button type="action" onClick={(e) => handleNext(e)}>
-            Next
+            {stage===4?'Submit':'Next'}
           </Button>
         </div>
       </form>
