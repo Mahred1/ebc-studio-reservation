@@ -16,13 +16,13 @@ function Page() {
           Check youre reservation
         </h1>
       </Link>
-      <form action={formAction}>
+      <form action={formAction} className="flex flex-col min-w-[400px]">
         <input
           name="reservationId"
           type="text"
           required
           id="reservationId"
-          className="p-4 mb-4 text-[#666] text-xl rounded-lg border mt-4 border-[#ccc] "
+          className="p-3 mb-4 text-[#666] text-xl  rounded-lg border mt-4 border-[#ccc] "
           placeholder="Registaraion ID"
         />
         <Button>Check</Button>

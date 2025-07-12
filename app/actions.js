@@ -20,7 +20,7 @@ export  async function checkReservation(prevState,formData) {
     // console.log(data)
   } catch (err) {
      console.error('Database error:', err);
-    return { error: 'An error occurred while verifying your reservation' };
+    return { error: 'An error occurred while verifying your reservation. Try again!' };
   }
 
   redirect(`/reserve/${reservationId}`);
