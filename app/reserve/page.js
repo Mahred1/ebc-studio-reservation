@@ -1,16 +1,16 @@
 "use client";
+import supabase from "@/supabase";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import Button from "../_components/Button";
 import Checkbox from "../_components/Checkbox";
 import Dropdown from "../_components/Dropdown";
 import Input from "../_components/Input";
 import InputTwins from "../_components/InputTwins";
-import Link from "next/link";
-import supabase from "@/supabase";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
 function Page() {
   const [stage, setStage] = useState(1);
@@ -20,18 +20,17 @@ function Page() {
     formState: { errors, isSubmitting },
   } = useForm();
   const regid = Math.floor(Math.random() * 1000);
-const router = useRouter()
+  const router = useRouter();
   async function onSubmit(data) {
     try {
       const { error } = await supabase
         .from("Rservations")
-        .insert(
-          [data])
+        .insert([data])
 
         .select();
       if (error) throw new Error();
-      toast.success("Reservation successfully created!")
-      router.replace(`reserve/${data.reservationId}`)
+      toast.success("Reservation successfully created!");
+      router.replace(`reserve/${data.reservationId}`);
     } catch (e) {
       console.log(e.message);
     }
@@ -56,11 +55,18 @@ const router = useRouter()
       </h1>
       <div className="my-6 flex justify-center">
         <ul className="flex w-full px-[30rem] justify-between items-center">
-          <li className={`${stage >= 1 && "text-4xl font-semibold"} `}>1</li>
+          <li
+            className={`${
+              stage >= 1 &&
+              "text-4xl font-normal text-white bg-primary-200 px-4 rounded-full py-2 shadow-2xl"
+            } `}
+          >
+            1
+          </li>
           <li
             className={`${
               stage >= 2
-                ? "text-4xl font-semibold "
+                ? "text-4xl font-normal text-white bg-primary-200 px-4 rounded-full py-2 shadow-2xl "
                 : "text-4xl  font-normal text-[#ccc]"
             } `}
           >
@@ -69,7 +75,7 @@ const router = useRouter()
           <li
             className={`${
               stage >= 3
-                ? "text-4xl font-semibold "
+                ? "text-4xl font-normal text-white bg-primary-200 px-4 rounded-full py-2  shadow-2xl"
                 : "text-4xl  font-normal text-[#ccc]"
             }`}
           >
@@ -78,7 +84,7 @@ const router = useRouter()
           <li
             className={`${
               stage >= 4
-                ? "text-4xl font-semibold"
+                ? "text-4xl font-normal text-white bg-primary-200 px-4 rounded-full py-2 shadow-2xl"
                 : "text-4xl  font-normal text-[#ccc]"
             } `}
           >
