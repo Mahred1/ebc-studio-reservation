@@ -21,6 +21,7 @@ function Page() {
   } = useForm();
   const regid = Math.floor(Math.random() * 1000);
   const router = useRouter();
+  
   async function onSubmit(data) {
     try {
       const { error } = await supabase
