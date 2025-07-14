@@ -46,6 +46,22 @@ export async function denyReservation(formData) {
   if(error){
     toast.error(error.message)
   }
+  revalidatePath(`/admin/review/${reservationId}`)
+
+}
+
+export async function approveReservation(formData) {
+  const reservationId = formData.get("reservationId");
+  
+  const {  error } = await supabase
+  .from('Rservations')
+  .update({ status: 'approved' })
+  .eq('reservationId', reservationId)
+  .select()
+
+  if(error){
+    toast.error(error.message)
+  }
   revalidatePath(`admin/review/${reservationId}`)
   revalidatePath(`reserve/${reservationId}`)
 }

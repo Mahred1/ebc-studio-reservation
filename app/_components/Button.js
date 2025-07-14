@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 
-function Button({ children, style = "primary", onClick,disabled }) {
+function Button({ children, style = "primary", onClick,disabled,className }) {
   const { pending } = useFormStatus();
   return (
     <button
@@ -12,7 +12,7 @@ function Button({ children, style = "primary", onClick,disabled }) {
         style == "fallback" && "bg-white border border-[#a7a7a7] text-[#7E7E7E]"
       } ${style === "secondary" && "bg-secondary-100 text-primary-100"} ${
         style === "action" && "bg-primary-200 text-white"
-      } px-10 py-3 font-md rounded-lg font-normal tracking-widest hover:scale-[103%] `}
+      } px-10 py-3 font-md rounded-lg font-normal tracking-widest hover:scale-[103%] ${className} `}
     >
       {pending ? "loading..." : children}
     </button>
