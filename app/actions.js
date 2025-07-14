@@ -36,33 +36,32 @@ export async function handleReview(formData) {
 
 export async function denyReservation(formData) {
   const reservationId = formData.get("reservationId");
-  
-  const {  error } = await supabase
-  .from('Rservations')
-  .update({ status: 'denied' })
-  .eq('reservationId', reservationId)
-  .select()
 
-  if(error){
-    toast.error(error.message)
+  const { error } = await supabase
+    .from("Rservations")
+    .update({ status: "denied" })
+    .eq("reservationId", reservationId)
+    .select();
+
+  if (error) {
+    console.log(error.message);
   }
-  revalidatePath(`/admin/review/${reservationId}`)
-  revalidatePath(`/reserve/${reservationId}`)
-
+  revalidatePath(`/admin/review/${reservationId}`);
+  revalidatePath(`/reserve/${reservationId}`);
 }
 
 export async function approveReservation(formData) {
   const reservationId = formData.get("reservationId");
-  
-  const {  error } = await supabase
-  .from('Rservations')
-  .update({ status: 'approved' })
-  .eq('reservationId', reservationId)
-  .select()
 
-  if(error){
-    toast.error(error.message)
+  const { error } = await supabase
+    .from("Rservations")
+    .update({ status: "approved" })
+    .eq("reservationId", reservationId)
+    .select();
+
+  if (error) {
+    console.log(error.message);
   }
-  revalidatePath(`/admin/review/${reservationId}`)
-  revalidatePath(`/reserve/${reservationId}`)
+  revalidatePath(`/admin/review/${reservationId}`);
+  revalidatePath(`/reserve/${reservationId}`);
 }
