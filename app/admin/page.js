@@ -16,7 +16,7 @@ async function Page() {
   const approved = data.filter((item) => item.status === "approved").length;
   const review = data.filter((item) => item.status === "review").length;
   const denied = data.filter((item) => item.status === "denied").length;
-  console.log(total, approved, review, denied);
+ 
  
   return (
     <div>

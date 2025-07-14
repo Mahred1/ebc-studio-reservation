@@ -25,3 +25,10 @@ export  async function checkReservation(prevState,formData) {
 
   redirect(`/reserve/${reservationId}`);
 }
+
+
+export async function handleReview(formData){
+const reservationId= formData.get('reservationId')
+ redirect(`/admin/review/${reservationId}`)
+
+}

@@ -2,13 +2,16 @@
 
 import { useRouter } from "next/navigation";
 import Button from "./Button";
+import { revalidatePath } from "next/cache";
+import { handleReview } from "../actions";
 
 function Reservation({ Fullname, time, date, reservationId, status }) {
-  const router = useRouter();
-console.log(reservationId)
-  function handleReview(){
-    router.replace(`/admin/review/${reservationId}`)
-  }
+  // const router = useRouter();
+  // async function handleReview() {
+  //   if (reservationId && status)
+  //     router.replace(`/admin/review/${reservationId}`);
+  //   revalidatePath(`/admin/`);
+  // }
   return (
     <div className="flex justify-between mt-6 border-b-2 pb-2 border-[#bebebe] w-[80%] mx-auto">
       <div>
@@ -21,7 +24,10 @@ console.log(reservationId)
         </p>
       </div>
       <div className="flex gap-3 items-center">
-        <Button onClick={handleReview} style="fallback">Review</Button>
+        <form action={handleReview}>
+          <input type="hidden" name="reservationId" value={reservationId} />
+          <Button style="fallback">Review</Button>
+        </form>
         <Button disabled={status === "approved"} style="action">
           {status === "approved" ? "Approved" : "Approve"}
         </Button>

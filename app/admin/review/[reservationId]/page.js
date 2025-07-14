@@ -41,12 +41,12 @@ async function Page({ params }) {
         {Object.entries(data).map(
           ([key, value]) =>
             key !== "created_at" &&
-            key !== "id" && <Detail title={key} key={key} detail={value} />
+            key !== "id" && <Detail title={key} key={key} detail={String(value)} />
         )}
       </div>
       <div className="flex gap-5 mt-5 justify-end mb-5">
-        <Button style="primary">Deny</Button>
-        <Button style="action">Approve</Button>
+        <Button disabled={data.status ==="denied"} style="primary">{data.status ==="denied"?"Denied":"Deny"}</Button>
+        <Button disabled={data.status==='approved'} style="action">{data.status ==="approved"?"Approved":"Approve"}</Button>
       </div>
     </div>
   );

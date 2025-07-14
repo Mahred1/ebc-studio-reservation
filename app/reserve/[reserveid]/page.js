@@ -48,7 +48,7 @@ async function Page({params}) {
         
 
         <div className="mt-10 ">
-        {Object.entries(data).map(([key,value])=>(key!=='created_at'&&key!=='id')&&<Detail title={key} key={key} detail={value} />)}
+        {Object.entries(data).map(([key,value])=>(key!=='created_at'&&key!=='id')&&<Detail title={key} key={key} detail={String(value)} />)}
         </div>
 
         </div>
