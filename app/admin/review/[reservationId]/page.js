@@ -1,10 +1,11 @@
 import Button from "@/app/_components/Button";
 import Detail from "@/app/_components/Detail";
-import { denyReservation } from "@/app/actions";
+import { approveReservation, denyReservation } from "@/app/actions";
 import supabase from "@/supabase";
 import Image from "next/image";
 import Link from "next/link";
 
+export const revalidate = 0;
 
 async function Page({ params }) {
   const { data, error } = await supabase
@@ -55,13 +56,28 @@ async function Page({ params }) {
             name="reservationId"
             value={data.reservationId}
           ></input>
-          <Button className={`${data.status==="denied"&& "cursor-not-allowed"}`} disabled={data.status === "denied"} style="primary">
+          <Button
+            className={`${data.status === "denied" && "cursor-not-allowed"}`}
+            disabled={data.status === "denied"}
+            style="primary"
+          >
             {data.status === "denied" ? "Denied" : "Deny"}
           </Button>
         </form>
-        <Button className={`${data.status==="denied"&& "cursor-not-allowed"}`} disabled={data.status === "approved"} style="action">
-          {data.status === "approved" ? "Approved" : "Approve"}
-        </Button>
+        <form action={approveReservation}>
+          <input
+            type="hidden"
+            name="reservationId"
+            value={data.reservationId}
+          ></input>
+          <Button
+            className={`${data.status === "approved" && "cursor-not-allowed"}`}
+            disabled={data.status === "approved"}
+            style="action"
+          >
+            {data.status === "approved" ? "Approved" : "Approve"}
+          </Button>
+        </form>
       </div>
     </div>
   );

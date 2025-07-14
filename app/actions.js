@@ -47,6 +47,7 @@ export async function denyReservation(formData) {
     toast.error(error.message)
   }
   revalidatePath(`/admin/review/${reservationId}`)
+  revalidatePath(`/reserve/${reservationId}`)
 
 }
 
@@ -62,6 +63,6 @@ export async function approveReservation(formData) {
   if(error){
     toast.error(error.message)
   }
-  revalidatePath(`admin/review/${reservationId}`)
-  revalidatePath(`reserve/${reservationId}`)
+  revalidatePath(`/admin/review/${reservationId}`)
+  revalidatePath(`/reserve/${reservationId}`)
 }
