@@ -1,5 +1,6 @@
 import Button from "@/app/_components/Button";
 import Detail from "@/app/_components/Detail";
+import { denyReservation } from "@/app/actions";
 import supabase from "@/supabase";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,7 +46,10 @@ async function Page({ params }) {
         )}
       </div>
       <div className="flex gap-5 mt-5 justify-end mb-5">
+        <form action={denyReservation}>
+        <input type="hidden" name="reservationId" value={data.reservationId}></input>
         <Button disabled={data.status ==="denied"} style="primary">{data.status ==="denied"?"Denied":"Deny"}</Button>
+        </form>
         <Button disabled={data.status==='approved'} style="action">{data.status ==="approved"?"Approved":"Approve"}</Button>
       </div>
     </div>
