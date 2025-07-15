@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import Button from "./Button";
 import { revalidatePath } from "next/cache";
-import { handleReview } from "../actions";
+import { approveReservation, handleReview } from "../actions";
 
 function Reservation({ Fullname, time, date, reservationId, status }) {
   // const router = useRouter();
@@ -28,9 +28,13 @@ function Reservation({ Fullname, time, date, reservationId, status }) {
           <input type="hidden" name="reservationId" value={reservationId} />
           <Button style="fallback">Review</Button>
         </form>
-        <Button disabled={status === "approved"} style="action">
+        <form action={approveReservation}>
+          <input type="hidden" name="reservationId" value={reservationId} />
+           <Button className={`${status === "approved"&&"cursor-not-allowed"}`} disabled={status === "approved"} style="action">
           {status === "approved" ? "Approved" : "Approve"}
         </Button>
+        </form>
+       
       </div>
     </div>
   );
